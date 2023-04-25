@@ -1,7 +1,6 @@
 import { formatCurrency } from "@/utilities/formatCurrency";
 import Button from "./Button";
 import { useCart } from "@/context/CartContext";
-import { useEffect } from "react";
 import { IProduct } from "@/interfaces/Interfaces";
 
 interface IProps {
@@ -9,11 +8,7 @@ interface IProps {
 }
 
 const Product = ({ product }: IProps) => {
-  const { addToCart, cartItems } = useCart();
-
-  useEffect(() => {
-    console.log(cartItems);
-  }, [cartItems]);
+  const { addToCart } = useCart();
 
   return (
     <div className="flex flex-col border rounded-md">

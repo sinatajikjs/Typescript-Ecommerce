@@ -1,65 +1,34 @@
-import { IProduct } from "@/interfaces/Interfaces";
 import { ReactNode, createContext, useContext, useReducer } from "react";
+import { ICartState, ICartContext } from "@/interfaces/Interfaces";
+import { addToCart } from "@/store/CartActions";
+import CartReducer from "@/store/CartReducer";
 
 interface IProps {
   children: ReactNode;
 }
 
-interface CartItemType extends IProduct {
-  qty: number;
-}
-
-type CartStateType = {
-  cartItems: CartItemType[];
-};
-
-const initialState: CartStateType = {
-  cartItems: [],
-};
-
-enum ACTION_TYPES {
-  ADD_TO_CART,
-}
-
-type ActionType = {
-  type: ACTION_TYPES;
-  payload: IProduct;
-};
-
-interface CartContextType {
-  cartItems: CartItemType[];
-  addToCart: (payload: IProduct) => void;
-}
-const initCartContextState: CartContextType = {
+const initCartContext: ICartContext = {
   cartItems: [],
   addToCart: () => {},
 };
 
-const reducer = (state: CartStateType, action: ActionType) => {
-  switch (action.type) {
-    case ACTION_TYPES.ADD_TO_CART: {
-      return {
-        ...state,
-        cartItems: [...state.cartItems, { ...action.payload, qty: 1 }],
-      };
-    }
-  }
-};
-
-const CartContext = createContext<CartContextType>(initCartContextState);
+const CartContext = createContext<ICartContext>(initCartContext);
 export const useCart = () => useContext(CartContext);
 
-const CartProvider = ({ children }: IProps) => {
-  const [{ cartItems }, dispatch] = useReducer(reducer, initialState);
+const initialState: ICartState = {
+  cartItems: [],
+};
 
-  const addToCart = (payload: IProduct) => {
-    dispatch({ type: ACTION_TYPES.ADD_TO_CART, payload });
+const CartProvider = ({ children }: IProps) => {
+  const [{ cartItems }, dispatch] = useReducer(CartReducer, initialState);
+
+  const ContextValue: ICartContext = {
+    cartItems,
+    addToCart: addToCart(dispatch),
   };
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart }}>
-      {children}
-    </CartContext.Provider>
+    <CartContext.Provider value={ContextValue}>{children}</CartContext.Provider>
   );
 };
 export default CartProvider;

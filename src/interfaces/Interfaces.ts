@@ -4,3 +4,17 @@ export interface IProduct {
   price: number;
   imgUrl: string;
 }
+
+interface ICartItem extends IProduct {
+  qty: number;
+}
+
+export interface ICartState {
+  cartItems: ICartItem[];
+}
+
+export interface ICartContext {
+  cartItems: ICartItem[];
+  addToCart: (payload: IProduct) => void;
+}
+

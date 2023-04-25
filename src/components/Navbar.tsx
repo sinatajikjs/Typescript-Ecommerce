@@ -1,20 +1,5 @@
 import { NavLink } from "react-router-dom";
-
-type linkType = {
-  label: string;
-  to: string;
-};
-
-const links: linkType[] = [
-  {
-    label: "Home",
-    to: "/",
-  },
-  {
-    label: "Cart",
-    to: "/cart",
-  },
-];
+import links from "@/data/navLinks.json";
 
 const Navbar = () => {
   return (
