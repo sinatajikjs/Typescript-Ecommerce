@@ -1,3 +1,6 @@
+import { formatCurrency } from "@/utilities/formatCurrency";
+import Button from "./Button";
+
 interface IProps {
   product: {
     id: number;
@@ -15,12 +18,12 @@ const Product = ({ product }: IProps) => {
         src={product.imgUrl}
         alt={product.name}
       />
-      <div className="p-4 flex flex-col gap-2">
+      <div className="p-4 flex flex-col gap-6">
         <div className="flex items-center">
           <h2 className="grow text-3xl font-semibold">{product.name}</h2>
-          <p>{product.price}</p>
+          <p className="text-xl">{formatCurrency(product.price)}</p>
         </div>
-        <button>+ Add To Cart</button>
+        <Button>+ Add To Cart</Button>
       </div>
     </div>
   );
