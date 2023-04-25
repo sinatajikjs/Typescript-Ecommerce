@@ -1,16 +1,20 @@
 import { formatCurrency } from "@/utilities/formatCurrency";
 import Button from "./Button";
+import { useCart } from "@/context/CartContext";
+import { useEffect } from "react";
+import { IProduct } from "@/interfaces/Interfaces";
 
 interface IProps {
-  product: {
-    id: number;
-    name: string;
-    price: number;
-    imgUrl: string;
-  };
+  product: IProduct;
 }
 
 const Product = ({ product }: IProps) => {
+  const { addToCart, cartItems } = useCart();
+
+  useEffect(() => {
+    console.log(cartItems);
+  }, [cartItems]);
+
   return (
     <div className="flex flex-col border rounded-md">
       <img
@@ -23,7 +27,7 @@ const Product = ({ product }: IProps) => {
           <h2 className="grow text-3xl font-semibold">{product.name}</h2>
           <p className="text-xl">{formatCurrency(product.price)}</p>
         </div>
-        <Button>+ Add To Cart</Button>
+        <Button onClick={() => addToCart(product)}>+ Add To Cart</Button>
       </div>
     </div>
   );

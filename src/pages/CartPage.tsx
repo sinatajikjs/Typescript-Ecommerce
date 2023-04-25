@@ -1,9 +1,10 @@
-import React from 'react'
+import { useCart } from "@/context/CartContext";
 
 const CartPage = () => {
-  return (
-    <div>CartPage</div>
-  )
-}
+  const cart = useCart();
+  console.log(cart);
 
-export default CartPage
+  return <div>CartPage</div>;
+};
+
+export default CartPage;

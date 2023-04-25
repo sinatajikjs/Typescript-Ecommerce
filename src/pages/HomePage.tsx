@@ -2,6 +2,8 @@ import Product from "@/components/Product";
 import storeItems from "@/data/items.json";
 
 const HomePage = () => {
+
+
   return (
     <main className="flex flex-col gap-5">
       <h1 className="text-4xl font-semibold">Store</h1>

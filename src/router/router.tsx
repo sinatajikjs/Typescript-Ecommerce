@@ -8,7 +8,7 @@ export default createBrowserRouter([
     path: "/",
     element: (
       <Layout>
-        <HomePage />,
+        <HomePage />
       </Layout>
     ),
   },
@@ -17,7 +17,7 @@ export default createBrowserRouter([
     path: "/cart",
     element: (
       <Layout>
-        <CartPage />,
+        <CartPage />
       </Layout>
     ),
   },
