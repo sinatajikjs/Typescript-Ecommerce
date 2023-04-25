@@ -9,7 +9,7 @@ interface IProps {
 }
 
 const Product = ({ product }: IProps) => {
-  const { getItemQuantity, addToCart } = useCart();
+  const { getItemQuantity, addToCart, removeFromCart } = useCart();
 
   const itemQuantity = getItemQuantity(product.id);
 
@@ -35,7 +35,10 @@ const Product = ({ product }: IProps) => {
           </Button>
           {itemQuantity && (
             <>
-              <Button className="w-16 h-10" onClick={() => addToCart(product)}>
+              <Button
+                className="w-16 h-10"
+                onClick={() => removeFromCart(product)}
+              >
                 {itemQuantity <= 1 ? <TrashIcon /> : "-"}
               </Button>
               <p className="text-xl">{itemQuantity}</p>

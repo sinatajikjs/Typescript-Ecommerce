@@ -16,5 +16,6 @@ export interface ICartState {
 export interface ICartContext {
   cartItems: ICartItem[];
   addToCart: (payload: IProduct) => void;
+  removeFromCart: (payload: IProduct) => void;
   getItemQuantity: (payload: number) => number | null;
 }

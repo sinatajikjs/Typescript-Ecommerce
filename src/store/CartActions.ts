@@ -9,6 +9,12 @@ export const addToCart = (dispatch: React.Dispatch<IAction>) => {
   };
 };
 
+export const removeFromCart = (dispatch: React.Dispatch<IAction>) => {
+  return (payload: IProduct) => {
+    dispatch({ type: ACTION_TYPES.REMOVE_FROM_CART, payload });
+  };
+};
+
 export const getItemQuantity = (cartItems: ICartItem[]) => {
   return (id: number) => {
     return cartItems.find((item) => item.id === id)?.qty ?? null;
