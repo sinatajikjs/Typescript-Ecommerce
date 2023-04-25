@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useContext, useReducer } from "react";
 import { ICartState, ICartContext } from "@/interfaces/Interfaces";
-import { addToCart } from "@/store/CartActions";
+import { addToCart, getItemQuantity } from "@/store/CartActions";
 import CartReducer from "@/store/CartReducer";
 
 interface IProps {
@@ -10,6 +10,7 @@ interface IProps {
 const initCartContext: ICartContext = {
   cartItems: [],
   addToCart: () => {},
+  getItemQuantity: () => null,
 };
 
 const CartContext = createContext<ICartContext>(initCartContext);
@@ -25,6 +26,7 @@ const CartProvider = ({ children }: IProps) => {
   const ContextValue: ICartContext = {
     cartItems,
     addToCart: addToCart(dispatch),
+    getItemQuantity: getItemQuantity(cartItems),
   };
 
   return (

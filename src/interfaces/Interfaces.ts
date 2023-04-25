@@ -5,7 +5,7 @@ export interface IProduct {
   imgUrl: string;
 }
 
-interface ICartItem extends IProduct {
+export interface ICartItem extends IProduct {
   qty: number;
 }
 
@@ -16,5 +16,5 @@ export interface ICartState {
 export interface ICartContext {
   cartItems: ICartItem[];
   addToCart: (payload: IProduct) => void;
+  getItemQuantity: (payload: number) => number | null;
 }
-
