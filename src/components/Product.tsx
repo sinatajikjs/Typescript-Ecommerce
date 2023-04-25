@@ -1,6 +1,6 @@
 import { formatCurrency } from "@/utilities/formatCurrency";
 import Button from "./Button";
-import { useCart } from "@/context/CartContext";
+import { useCart } from "@/store/CartProvider";
 import { IProduct } from "@/interfaces/Interfaces";
 
 interface IProps {
@@ -8,7 +8,7 @@ interface IProps {
 }
 
 const Product = ({ product }: IProps) => {
-  const { addToCart } = useCart();
+  const { cartItems,addToCart } = useCart();
 
   return (
     <div className="flex flex-col border rounded-md">
@@ -22,7 +22,7 @@ const Product = ({ product }: IProps) => {
           <h2 className="grow text-3xl font-semibold">{product.name}</h2>
           <p className="text-xl">{formatCurrency(product.price)}</p>
         </div>
-        <Button onClick={() => addToCart(product)}>+ Add To Cart</Button>
+        <Button onClick={() => addToCart(product)}>{'+ Add To Cart'}</Button>
       </div>
     </div>
   );
