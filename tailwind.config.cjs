@@ -9,6 +9,12 @@ export default {
       sans: ["Poppins", "sans-serif"],
     },
     extend: {
+      minHeight: {
+        cart: "calc(100vh - 7rem)",
+      },
+      height: {
+        cart: "calc(100vh - 7rem)",
+      },
       colors: {
         primary: colors.blue[600],
         hoverPrimary: colors.blue[800],

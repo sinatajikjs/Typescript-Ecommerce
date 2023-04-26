@@ -36,10 +36,10 @@ const Product = ({ product }: IProps) => {
           {itemQuantity && (
             <>
               <Button
-                className="w-16 h-10"
+                className="w-16 flex justify-center"
                 onClick={() => removeFromCart(product)}
               >
-                {itemQuantity <= 1 ? <TrashIcon /> : "-"}
+                {itemQuantity <= 1 ? <TrashIcon className="w-6" /> : "-"}
               </Button>
               <p className="text-xl">{itemQuantity}</p>
               <Button className="w-16" onClick={() => addToCart(product)}>

@@ -3,9 +3,9 @@ import storeItems from "@/data/items.json";
 
 const HomePage = () => {
   return (
-    <main className="flex flex-col gap-5">
+    <main className="flex flex-col gap-5 h-max">
       <h1 className="text-4xl font-semibold">Store</h1>
-      <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-28">
         {storeItems.map((product) => {
           return <Product key={product.id} product={product} />;
         })}
