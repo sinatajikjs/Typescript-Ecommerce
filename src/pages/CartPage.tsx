@@ -17,8 +17,8 @@ const CartPage = () => {
     );
 
   return (
-    <main className="min-h-cart">
-      <div className="flex flex-col gap-5 bg-white border rounded-md p-5">
+    <main className="min-h-cart pb-16">
+      <div className="flex flex-col gap-5 bg-white border rounded-md pt-5">
         {cartItems.map((cartItem) => {
           return <CartItem key={cartItem.id} cartItem={cartItem} />;
         })}

@@ -8,17 +8,21 @@ interface IProps {
 
 const CartItem = ({ cartItem }: IProps) => {
   return (
-    <section className="flex gap-4 items-center w-[520px] justify-between">
-      <img
-        className="w-40 aspect-video object-cover rounded-lg"
-        src={cartItem.imgUrl}
-        alt={cartItem.name}
-      />
-      <div className="grow">
-        <h2 className="text-xl">{cartItem.name}</h2>
-        <p>{formatCurrency(cartItem.price)}</p>
+    <section className="flex sm:flex-row flex-col sm:gap-20 px-5 xs:gap-4 gap-2 sm:items-center items-start border-b border-gray-300 pb-4">
+      <div className="flex xs:flex-row flex-col xs:items-center items-start xs:gap-4 gap-2 w-full">
+        <img
+          className="xs:w-40 w-64 aspect-video object-cover rounded-lg"
+          src={cartItem.imgUrl}
+          alt={cartItem.name}
+        />
+        <div>
+          <h2 className="text-xl font-medium">{cartItem.name}</h2>
+          <p className="font-light">{formatCurrency(cartItem.price)}</p>
+        </div>
       </div>
-      <QTYButtons product={cartItem} />
+      <div className="w-40">
+        <QTYButtons product={cartItem} />
+      </div>
     </section>
   );
 };
