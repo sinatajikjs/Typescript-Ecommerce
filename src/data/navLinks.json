@@ -5,6 +5,7 @@
   },
   {
     "label": "Cart",
-    "to": "/cart"
+    "to": "/cart",
+    "badge": true
   }
 ]
