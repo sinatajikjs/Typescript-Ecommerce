@@ -1,11 +1,10 @@
 import Button from "@/components/Button";
-import QTYButtons from "@/components/QTYButtons";
+import CartItem from "@/components/CartItem";
 import { useCart } from "@/store/CartProvider";
-import { formatCurrency } from "@/utilities/formatCurrency";
 import { Link } from "react-router-dom";
 
 const CartPage = () => {
-  const { cartItems, removeFromCart, getItemQuantity, addToCart } = useCart();
+  const { cartItems } = useCart();
 
   if (cartItems.length === 0)
     return (
@@ -21,23 +20,7 @@ const CartPage = () => {
     <main className="min-h-cart">
       <div className="flex flex-col gap-5 bg-white border rounded-md p-5">
         {cartItems.map((cartItem) => {
-          return (
-            <section
-              key={cartItem.id}
-              className="flex gap-4 items-center w-[520px] justify-between"
-            >
-              <img
-                className="w-40 aspect-video object-cover rounded-lg"
-                src={cartItem.imgUrl}
-                alt={cartItem.name}
-              />
-              <div className="grow">
-                <h2 className="text-xl">{cartItem.name}</h2>
-                <p>{formatCurrency(cartItem.price)}</p>
-              </div>
-              <QTYButtons product={cartItem} />
-            </section>
-          );
+          return <CartItem key={cartItem.id} cartItem={cartItem} />;
         })}
       </div>
     </main>
