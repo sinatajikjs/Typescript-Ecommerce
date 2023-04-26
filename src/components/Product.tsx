@@ -1,8 +1,8 @@
 import { formatCurrency } from "@/utilities/formatCurrency";
 import Button from "./Button";
 import { useCart } from "@/store/CartProvider";
-import { TrashIcon } from "@heroicons/react/20/solid";
 import { IProduct } from "@/interfaces/Interfaces";
+import QTYButtons from "./QTYButtons";
 
 interface IProps {
   product: IProduct;
@@ -33,20 +33,7 @@ const Product = ({ product }: IProps) => {
           >
             {itemQuantity ? "In Cart" : "+ Add To Cart"}
           </Button>
-          {itemQuantity && (
-            <>
-              <Button
-                className="w-16 flex justify-center"
-                onClick={() => removeFromCart(product)}
-              >
-                {itemQuantity <= 1 ? <TrashIcon className="w-6" /> : "-"}
-              </Button>
-              <p className="text-xl">{itemQuantity}</p>
-              <Button className="w-16" onClick={() => addToCart(product)}>
-                +
-              </Button>
-            </>
-          )}
+          {itemQuantity && <QTYButtons product={product} />}
         </div>
       </div>
     </div>
