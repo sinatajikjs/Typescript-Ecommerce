@@ -21,14 +21,14 @@ const Product = ({ product }: IProps) => {
         alt={product.name}
       />
       <div className="p-4 flex flex-col gap-6">
-        <div className="flex items-center">
+        <div className="flex xs:flex-row xs:items-center flex-col">
           <h2 className="grow text-2xl font-medium">{product.name}</h2>
-          <p className="text-xl">{formatCurrency(product.price)}</p>
+          <p className="text-xl font-light">{formatCurrency(product.price)}</p>
         </div>
-        <div className="flex gap-2 items-center">
+        <div className="flex xs:flex-row flex-col gap-2 items-center">
           <Button
             disabled={!!itemQuantity}
-            className="grow"
+            className={`grow w-full ${itemQuantity ? 'hidden' : 'block'} xs:block`}
             onClick={() => addToCart(product)}
           >
             {itemQuantity ? "In Cart" : "+ Add To Cart"}

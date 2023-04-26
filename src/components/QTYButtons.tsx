@@ -13,9 +13,9 @@ const QTYButtons = ({product}:IProps) => {
   const itemQuantity = getItemQuantity(product.id)
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex w-full items-center gap-2">
       <Button
-        className="w-16 flex justify-center"
+        className="xs:w-16 flex justify-center w-full"
         onClick={() => removeFromCart(product)}
       >
         {itemQuantity! <= 1 ? (
@@ -25,7 +25,7 @@ const QTYButtons = ({product}:IProps) => {
         )}
       </Button>
       <p className="text-xl w-4 text-center">{itemQuantity}</p>
-      <Button className="w-16" onClick={() => addToCart(product)}>
+      <Button className="xs:w-16 w-full" onClick={() => addToCart(product)}>
         +
       </Button>
     </div>

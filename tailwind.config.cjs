@@ -21,6 +21,9 @@ export default {
         disabled: colors.gray[300],
         light: "#f8f9fa",
       },
+      screens:{
+        xs:'400px'
+      }
     },
   },
   plugins: [],
