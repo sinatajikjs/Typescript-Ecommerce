@@ -16,11 +16,11 @@ const Product = ({ product }: IProps) => {
   return (
     <div className="flex flex-col border rounded-md">
       <img
-        className="h-52 aspect-video object-cover rounded-t-md"
+        className="w-96 aspect-video object-cover rounded-t-md"
         src={product.imgUrl}
         alt={product.name}
       />
-      <div className="p-4 flex flex-col gap-6">
+      <div className="p-4 flex flex-col xs:gap-6 gap-4">
         <div className="flex xs:flex-row xs:items-center flex-col">
           <h2 className="grow text-2xl font-medium">{product.name}</h2>
           <p className="text-xl font-light">{formatCurrency(product.price)}</p>
