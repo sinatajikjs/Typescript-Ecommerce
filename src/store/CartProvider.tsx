@@ -1,6 +1,16 @@
-import { ReactNode, createContext, useContext, useReducer } from "react";
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+} from "react";
 import { ICartState, ICartContext } from "@/interfaces/Interfaces";
-import { addToCart, getItemQuantity,removeFromCart } from "@/store/CartActions";
+import {
+  addToCart,
+  getItemQuantity,
+  removeFromCart,
+} from "@/store/CartActions";
 import CartReducer from "@/store/CartReducer";
 
 interface IProps {
@@ -10,7 +20,7 @@ interface IProps {
 const initCartContext: ICartContext = {
   cartItems: [],
   addToCart: () => {},
-  removeFromCart:() => {},
+  removeFromCart: () => {},
   getItemQuantity: () => null,
 };
 
@@ -18,7 +28,7 @@ const CartContext = createContext<ICartContext>(initCartContext);
 export const useCart = () => useContext(CartContext);
 
 const initialState: ICartState = {
-  cartItems: [],
+  cartItems: JSON.parse(localStorage.getItem("cartItems") || "[]"),
 };
 
 const CartProvider = ({ children }: IProps) => {
@@ -27,9 +37,13 @@ const CartProvider = ({ children }: IProps) => {
   const ContextValue: ICartContext = {
     cartItems,
     addToCart: addToCart(dispatch),
-    removeFromCart:removeFromCart(dispatch),
+    removeFromCart: removeFromCart(dispatch),
     getItemQuantity: getItemQuantity(cartItems),
   };
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   return (
     <CartContext.Provider value={ContextValue}>{children}</CartContext.Provider>
